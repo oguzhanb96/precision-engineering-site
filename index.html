@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oğuzhan Bacak - Precision Engineering Solutions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&family=Rajdhani:wght@400;500;600;700&family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        heading: ['Orbitron', 'sans-serif'],
+                        body: ['Barlow', 'sans-serif'],
+                        technical: ['Rajdhani', 'sans-serif'],
+                    },
+                    borderRadius: {
+                        DEFAULT: '9999px',
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            background: linear-gradient(135deg, #0c0c1e 0%, #1a0a2e 25%, #16213e 50%, #0f0f23 75%, #1a1a3e 100%);
+            background-size: 400% 400%;
+            animation: cosmicShift1 15s ease infinite;
+            margin: 0;
+            font-family: 'Barlow', sans-serif;
+            overflow-x: hidden;
+        }
+        .snap-container {
+            scroll-snap-type: none;
+            overflow-y: auto;
+            height: auto;
+        }
+        .snap-section {
+            scroll-snap-align: none;
+            scroll-snap-stop: normal;
+        }
+        .parallax-video {
+            transform: translateZ(0);
+            will-change: transform;
+        }
+        .video-overlay {
+            background: linear-gradient(
+                180deg,
+                rgba(0,0,0,0.3) 0%,
+                rgba(0,0,0,0.1) 40%,
+                rgba(0,0,0,0.1) 60%,
+                rgba(0,0,0,0.4) 100%
+            );
+        }
+        .section-transition {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .cosmic-bg-1 {
+            background: linear-gradient(135deg, #0c0c1e 0%, #1a0a2e 25%, #16213e 50%, #0f0f23 75%, #1a1a3e 100%);
+            background-size: 400% 400%;
+            animation: cosmicShift1 15s ease infinite;
+        }
+        .cosmic-bg-2 {
+            background: linear-gradient(135deg, #1a0a2e 0%, #0f0f23 25%, #16213e 50%, #1a1a3e 75%, #0c0c1e 100%);
+            background-size: 400% 400%;
+            animation: cosmicShift2 20s ease infinite;
+        }
+        .cosmic-bg-3 {
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a3e 25%, #16213e 50%, #1a0a2e 75%, #0c0c1e 100%);
+            background-size: 400% 400%;
+            animation: cosmicShift3 18s ease infinite;
+        }
+        @keyframes cosmicShift1 {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        @keyframes cosmicShift2 {
+            0% { background-position: 100% 50%; }
+            50% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+        @keyframes cosmicShift3 {
+            0% { background-position: 50% 0%; }
+            50% { background-position: 50% 100%; }
+            100% { background-position: 50% 0%; }
+        }
+        .star-field {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+        }
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+        .liquid-glass {
+            background: rgba(255,255,255,0.01);
+            background-blend-mode: luminosity;
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            border: none;
+            box-shadow: inset 0 1px 1px rgba(255,255,255,0.1);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .liquid-glass:hover {
+            background: rgba(255,255,255,0.03);
+        }
+        .liquid-glass::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            padding: 1.4px;
+            background: linear-gradient(180deg,
+                rgba(255,255,255,0.45) 0%,
+                rgba(255,255,255,0.15) 20%,
+                rgba(255,255,255,0) 40%,
+                rgba(255,255,255,0) 60%,
+                rgba(255,255,255,0.15) 80%,
+                rgba(255,255,255,0.45) 100%);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+        .liquid-glass-strong {
+            background: rgba(255,255,255,0.02);
+            background-blend-mode: luminosity;
+            backdrop-filter: blur(50px);
+            -webkit-backdrop-filter: blur(50px);
+            border: none;
+            box-shadow: 4px 4px 4px rgba(0,0,0,0.05), inset 0 1px 1px rgba(255,255,255,0.15);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .liquid-glass-strong:hover {
+            background: rgba(255,255,255,0.05);
+            transform: scale(1.02);
+            box-shadow: 6px 6px 20px rgba(255,255,255,0.1), inset 0 1px 1px rgba(255,255,255,0.2);
+        }
+        .liquid-glass-strong:active {
+            transform: scale(0.98);
+        }
+        .liquid-glass-strong::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            padding: 1.4px;
+            background: linear-gradient(180deg,
+                rgba(255,255,255,0.5) 0%,
+                rgba(255,255,255,0.2) 20%,
+                rgba(255,255,255,0) 40%,
+                rgba(255,255,255,0) 60%,
+                rgba(255,255,255,0.2) 80%,
+                rgba(255,255,255,0.5) 100%);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+        .btn-primary {
+            background: #fff;
+            color: #000;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-primary:hover {
+            background: #f0f0f0;
+            transform: scale(1.05);
+            box-shadow: 0 10px 40px rgba(255,255,255,0.2);
+        }
+        .btn-primary:active {
+            transform: scale(0.95);
+        }
+        .btn-secondary {
+            color: #fff;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .btn-secondary:hover {
+            color: #fff;
+            text-shadow: 0 0 20px rgba(255,255,255,0.5);
+        }
+        .btn-secondary:hover svg {
+            transform: translateX(4px);
+        }
+        .btn-secondary svg {
+            transition: transform 0.3s ease;
+        }
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 1px;
+            background: #fff;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        .nav-link:hover::after {
+            width: 80%;
+        }
+        .nav-link:hover {
+            color: #fff;
+        }
+        .feature-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(255,255,255,0.05);
+        }
+        .stat-card {
+            transition: all 0.4s ease;
+        }
+        .stat-card:hover {
+            transform: scale(1.03);
+            background: rgba(255,255,255,0.03);
+        }
+        .partner-name {
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+        .partner-name:hover {
+            text-shadow: 0 0 30px rgba(255,255,255,0.4);
+            transform: scale(1.1);
+        }
+        .tech-border {
+            position: relative;
+        }
+        .tech-border::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: linear-gradient(90deg, #fff, transparent);
+        }
+        .grid-line {
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+        .scroll-indicator {
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0) translateX(-50%);
+            }
+            40% {
+                transform: translateY(-10px) translateX(-50%);
+            }
+            60% {
+                transform: translateY(-5px) translateX(-50%);
+            }
+        }
+        .pulse-glow {
+            animation: pulse-glow 2s infinite;
+        }
+        @keyframes pulse-glow {
+            0%, 100% {
+                box-shadow: 0 0 20px rgba(255,255,255,0.1);
+            }
+            50% {
+                box-shadow: 0 0 40px rgba(255,255,255,0.2);
+            }
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #111;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #444;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #666;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/framer-motion@11.11.17/dist/framer-motion.js"></script>
+    <script>
+        if (window.FramerMotion) {
+            window.Motion = window.FramerMotion;
+        } else if (window.Motion) {
+            window.FramerMotion = window.Motion;
+        }
+        const originalError = console.error;
+        console.error = function(...args) {
+            if (args[0] && typeof args[0] === 'string' && args[0].includes('unique "key" prop')) {
+                return;
+            }
+            originalError.apply(console, args);
+        };
+    </script>
+
+    <script type="text/babel">
+        const { useState, useEffect, useRef } = React;
+        const { motion, useInView } = Motion;
+
+        const FADE_MS = 500;
+        const FADE_OUT_LEAD = 0.55;
+
+        const FadingVideo = ({ src, className, style, ...props }) => {
+            const videoRef = useRef(null);
+            const rafRef = useRef(null);
+            const fadingOutRef = useRef(false);
+            const [opacity, setOpacity] = useState(0);
+
+            const fadeTo = (target, duration) => {
+                const video = videoRef.current;
+                if (!video) return;
+
+                if (rafRef.current) {
+                    cancelAnimationFrame(rafRef.current);
+                }
+
+                const startOpacity = parseFloat(video.style.opacity) || 0;
+                const startTime = performance.now();
+
+                const animate = (currentTime) => {
+                    const elapsed = currentTime - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    const currentOpacity = startOpacity + (target - startOpacity) * progress;
+
+                    video.style.opacity = currentOpacity;
+                    setOpacity(currentOpacity);
+
+                    if (progress < 1) {
+                        rafRef.current = requestAnimationFrame(animate);
+                    }
+                };
+
+                rafRef.current = requestAnimationFrame(animate);
+            };
+
+            useEffect(() => {
+                const video = videoRef.current;
+                if (!video) return;
+
+                const handleLoadedData = () => {
+                    video.style.opacity = 0;
+                    video.play().then(() => {
+                        fadeTo(1, FADE_MS);
+                    }).catch(err => console.log('Autoplay failed:', err));
+                };
+
+                const handleTimeUpdate = () => {
+                    if (!fadingOutRef.current && video.duration - video.currentTime <= FADE_OUT_LEAD && video.duration - video.currentTime > 0) {
+                        fadingOutRef.current = true;
+                        fadeTo(0, FADE_MS);
+                    }
+                };
+
+                const handleEnded = () => {
+                    video.style.opacity = 0;
+                    setTimeout(() => {
+                        video.currentTime = 0;
+                        fadingOutRef.current = false;
+                        video.play().then(() => {
+                            fadeTo(1, FADE_MS);
+                        }).catch(err => console.log('Replay failed:', err));
+                    }, 100);
+                };
+
+                video.addEventListener('loadeddata', handleLoadedData);
+                video.addEventListener('timeupdate', handleTimeUpdate);
+                video.addEventListener('ended', handleEnded);
+
+                return () => {
+                    if (rafRef.current) {
+                        cancelAnimationFrame(rafRef.current);
+                    }
+                    video.removeEventListener('loadeddata', handleLoadedData);
+                    video.removeEventListener('timeupdate', handleTimeUpdate);
+                    video.removeEventListener('ended', handleEnded);
+                };
+            }, []);
+
+            return (
+                <video
+                    ref={videoRef}
+                    className={className}
+                    style={{ ...style, opacity: opacity }}
+                    muted
+                    playsInline
+                    preload="auto"
+                    {...props}
+                >
+                    <source src={src} type="video/mp4" />
+                </video>
+            );
+        };
+
+        window.FadingVideo = FadingVideo;
+
+        const BlurText = ({ text, className }) => {
+            const ref = useRef(null);
+            const isInView = useInView(ref, { once: true, amount: 0.1 });
+
+            const words = text.split(' ');
+
+            return (
+                <p ref={ref} className={`flex flex-wrap justify-center gap-y-0.1em ${className}`} style={{ rowGap: '0.1em', letterSpacing: '2px' }}>
+                    {words.map((word, i) => (
+                        <motion.span
+                            key={i}
+                            initial={{ filter: 'blur(10px)', opacity: 0, y: 50 }}
+                            animate={
+                                isInView
+                                    ? [
+                                        { filter: 'blur(5px)', opacity: 0.5, y: -5, transition: { duration: 0.35, ease: 'easeOut', delay: i * 0.1 } },
+                                        { filter: 'blur(0px)', opacity: 1, y: 0, transition: { duration: 0.35, ease: 'easeOut', delay: i * 0.1 + 0.35 } }
+                                      ]
+                                    : { filter: 'blur(10px)', opacity: 0, y: 50 }
+                            }
+                            style={{ display: 'inline-block', marginRight: '0.28em' }}
+                        >
+                            {word}
+                        </motion.span>
+                    ))}
+                </p>
+            );
+        };
+
+        window.BlurText = BlurText;
+
+        const ScrollIndicator = () => (
+            <motion.div
+                className="absolute bottom-8 left-1/2 scroll-indicator z-20"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 2, duration: 0.5 }}
+            >
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" className="opacity-60">
+                    <path d="M12 5v14M5 12l7 7 7-7"/>
+                </svg>
+            </motion.div>
+        );
+
+        const Modal = ({ isOpen, onClose, title, children }) => {
+            if (!isOpen) return null;
+
+            return (
+                <motion.div
+                    className="fixed inset-0 z-[100] flex items-center justify-center p-4"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                >
+                    <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" onClick={onClose}></div>
+                    <motion.div
+                        className="relative liquid-glass-strong rounded-3xl p-8 max-w-md w-full"
+                        initial={{ scale: 0.9, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        exit={{ scale: 0.9, opacity: 0 }}
+                        transition={{ type: 'spring', damping: 25 }}
+                    >
+                        <button
+                            onClick={onClose}
+                            className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+                        >
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
+                                <path d="M18 6L6 18M6 6l12 12"/>
+                            </svg>
+                        </button>
+                        <h3 className="font-heading text-white text-3xl tracking-[2px] uppercase mb-4">{title}</h3>
+                        <div className="text-white/80 font-body">{children}</div>
+                    </motion.div>
+                </motion.div>
+            );
+        };
+
+        const Navbar = ({ onNavigate }) => {
+            const [activeSection, setActiveSection] = useState('home');
+
+            const navItems = [
+                { id: 'home', label: 'Home' },
+                { id: 'capabilities', label: 'Solutions' },
+                { id: 'projects', label: 'Projects' },
+                { id: 'about', label: 'About' },
+                { id: 'contact', label: 'Contact' }
+            ];
+
+            useEffect(() => {
+                const handleScroll = () => {
+                    const sections = ['home', 'capabilities'];
+                    const scrollPosition = window.scrollY + window.innerHeight / 3;
+
+                    for (let i = sections.length - 1; i >= 0; i--) {
+                        const section = document.getElementById(sections[i]);
+                        if (section && section.offsetTop <= scrollPosition) {
+                            setActiveSection(sections[i]);
+                            break;
+                        }
+                    }
+                };
+
+                window.addEventListener('scroll', handleScroll);
+                return () => window.removeEventListener('scroll', handleScroll);
+            }, []);
+
+            const handleNavClick = (item) => {
+                const targetId = item.action || item.id;
+                setActiveSection(item.id);
+                onNavigate(targetId);
+            };
+
+            return (
+                <motion.nav
+                    className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-full max-w-4xl px-8 lg:px-16"
+                    initial={{ filter: 'blur(10px)', opacity: 0, y: -20 }}
+                    animate={{ filter: 'blur(0px)', opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, ease: 'easeOut', delay: 0.2 }}
+                >
+                    <div className="liquid-glass rounded-full px-4 py-2 flex items-center justify-between">
+                        <a
+                            href="#home"
+                            onClick={(e) => { e.preventDefault(); handleNavClick('home'); }}
+                            className="w-12 h-12 liquid-glass rounded-full flex items-center justify-center hover:scale-105 transition-transform cursor-pointer"
+                            style={{ width: '60px', height: '48px' }}
+                        >
+                            <span className="font-heading text-white text-2xl tracking-[2px]">OB</span>
+                        </a>
+
+                        <div className="hidden md:flex items-center gap-1.5">
+                            <div className="liquid-glass rounded-full px-1.5 py-1.5 flex items-center gap-1">
+                                {navItems.map((item) => (
+                                    <a
+                                        key={item.id}
+                                        href={`#${item.id}`}
+                                        onClick={(e) => { e.preventDefault(); handleNavClick(item); }}
+                                        className={`nav-link px-3 py-2 text-sm font-medium font-body relative ${
+                                            activeSection === item.id ? 'text-white' : 'text-white/70'
+                                        }`}
+                                    >
+                                        {item.label}
+                                    </a>
+                                ))}
+                            </div>
+                        </div>
+
+                        <div className="flex items-center gap-3">
+                            <button
+                                onClick={() => onNavigate('signup')}
+                                className="btn-primary rounded-full px-4 py-2 text-sm font-medium flex items-center gap-2 whitespace-nowrap"
+                            >
+                                Get a Quote
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                                    <polyline points="7 7 17 7 17 17"></polyline>
+                                </svg>
+                            </button>
+                            <div className="w-12 h-12"></div>
+                        </div>
+                    </div>
+                </motion.nav>
+            );
+        };
+
+        window.Navbar = Navbar;
+
+        const HeroContent = ({ onNavigate }) => {
+            return (
+                <div className="flex flex-col items-center flex-1 justify-center pt-24 px-4">
+                    <motion.div
+                        className="liquid-glass rounded-full px-1.5 py-1.5 flex items-center gap-2 cursor-default"
+                        initial={{ filter: 'blur(10px)', opacity: 0, y: 20 }}
+                        animate={{ filter: 'blur(0px)', opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, ease: 'easeOut', delay: 0.4 }}
+                    >
+                        <span className="bg-white text-black px-3 py-1 rounded-full text-xs font-semibold">New</span>
+                        <span className="text-sm text-white/90 pr-3 font-body">Precision Engineering for Tomorrow's Industry</span>
+                    </motion.div>
+
+                    <div className="mt-8 max-w-2xl text-center">
+                        <BlurText
+                            text="Engineering Precision Building the Future"
+                            className="text-6xl md:text-7xl lg:text-[5.5rem] font-heading text-white leading-[0.8] justify-center tracking-[2px] uppercase"
+                        />
+                    </div>
+
+                    <motion.p
+                        className="mt-6 text-sm md:text-base text-white max-w-2xl font-body font-light leading-tight text-center"
+                        initial={{ filter: 'blur(10px)', opacity: 0, y: 20 }}
+                        animate={{ filter: 'blur(0px)', opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, ease: 'easeOut', delay: 0.8 }}
+                    >
+                        We design and manufacture high-precision mechanical components for aerospace, automotive, and industrial applications. From concept to production, we deliver excellence.
+                    </motion.p>
+
+                    <motion.div
+                        className="flex items-center gap-6 mt-8"
+                        initial={{ filter: 'blur(10px)', opacity: 0, y: 20 }}
+                        animate={{ filter: 'blur(0px)', opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, ease: 'easeOut', delay: 1.1 }}
+                    >
+                        <button
+                            onClick={() => onNavigate('signup')}
+                            className="liquid-glass-strong rounded-full px-5 py-2.5 text-sm font-medium text-white flex items-center gap-2 cursor-pointer"
+                        >
+                            Request Quote
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                <line x1="7" y1="17" x2="17" y2="7"></line>
+                                <polyline points="7 7 17 7 17 17"></polyline>
+                            </svg>
+                        </button>
+                        <button
+                            onClick={() => onNavigate('capabilities')}
+                            className="btn-secondary flex items-center gap-2 text-sm font-medium"
+                        >
+                            View Solutions
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <polygon points="6 4 20 12 6 20 6 4"></polygon>
+                            </svg>
+                        </button>
+                    </motion.div>
+
+                    <motion.div
+                        className="flex items-stretch gap-4 mt-10"
+                        initial={{ filter: 'blur(10px)', opacity: 0, y: 20 }}
+                        animate={{ filter: 'blur(0px)', opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, ease: 'easeOut', delay: 1.3 }}
+                    >
+                        <div className="stat-card liquid-glass rounded-[1.25rem] p-5 w-[220px] flex flex-col items-start cursor-default">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                            </svg>
+                            <span className="font-heading text-white text-4xl tracking-[2px] uppercase">98%</span>
+                            <span className="text-xs text-white font-body font-light mt-2">Precision Tolerance Achieved</span>
+                        </div>
+                        <div className="stat-card liquid-glass rounded-[1.25rem] p-5 w-[220px] flex flex-col items-start cursor-default">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M12 6v6l4 2"/>
+                            </svg>
+                            <span className="font-heading text-white text-4xl tracking-[2px] uppercase">24h</span>
+                            <span className="text-xs text-white font-body font-light mt-2">Rapid Prototype Delivery</span>
+                        </div>
+                    </motion.div>
+                </div>
+            );
+        };
+
+        window.HeroContent = HeroContent;
+
+        const TechBadge = () => {
+            const specs = ['ISO 9001', 'AS9100', 'CMM Inspection', 'CAD/CAM'];
+            return (
+                <motion.div
+                    className="flex flex-col items-center gap-4 pb-8"
+                    initial={{ filter: 'blur(10px)', opacity: 0, y: 20 }}
+                    animate={{ filter: 'blur(0px)', opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, ease: 'easeOut', delay: 1.4 }}
+                >
+                    <div className="flex items-center gap-6 md:gap-8">
+                        {specs.map((spec) => (
+                            <div key={spec} className="flex items-center gap-2">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="white" stroke="white" strokeWidth="2">
+                                    <polyline points="20 6 9 17 4 12 4 12 4 12"/>
+                                </svg>
+                                <span className="font-body text-white/70 text-xs tracking-[1px] uppercase">{spec}</span>
+                            </div>
+                        ))}
+                    </div>
+                    <div className="flex items-center gap-3 mt-2">
+                        <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
+                        <span className="text-white/50 text-xs">Ready to Collaborate</span>
+                    </div>
+                </motion.div>
+            );
+        };
+
+        window.TechBadge = TechBadge;
+
+        const StarField = () => {
+            const stars = Array.from({ length: 100 }, (_, i) => ({
+                id: i,
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                delay: `${Math.random() * 3}s`,
+                size: Math.random() * 2 + 1
+            }));
+            return (
+                <div className="star-field">
+                    {stars.map((star) => (
+                        <div
+                            key={star.id}
+                            className="star"
+                            style={{
+                                left: star.left,
+                                top: star.top,
+                                animationDelay: star.delay,
+                                width: `${star.size}px`,
+                                height: `${star.size}px`
+                            }}
+                        />
+                    ))}
+                </div>
+            );
+        };
+
+        const Hero = ({ onNavigate }) => {
+            return (
+                <section id="home" className="relative min-h-screen w-full overflow-hidden">
+                    <StarField />
+                    <div className="relative z-10 flex flex-col h-full">
+                        <HeroContent onNavigate={onNavigate} />
+                        <TechBadge />
+                        <ScrollIndicator />
+                    </div>
+                </section>
+            );
+        };
+
+        window.Hero = Hero;
+
+        const FeatureCard = ({ icon, title, description, tags, onAction }) => {
+            return (
+                <motion.div
+                    className="feature-card liquid-glass rounded-[1.25rem] p-6 min-h-[360px] flex flex-col cursor-pointer"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    onClick={() => onAction && onAction(title)}
+                >
+                    <div className="flex items-start justify-between gap-4">
+                        <div className="liquid-glass rounded-[0.75rem] p-2.5 w-11 h-11 flex items-center justify-center">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" className="text-white">
+                                {icon}
+                            </svg>
+                        </div>
+                        <div className="flex flex-wrap justify-end gap-1.5 max-w-[70%]">
+                            {tags.map((tag) => (
+                                <span key={tag} className="liquid-glass rounded-full px-3 py-1 text-[11px] text-white/90 font-body whitespace-nowrap cursor-default">{tag}</span>
+                            ))}
+                        </div>
+                    </div>
+                    <div className="flex-1"></div>
+                    <div className="mt-6">
+                        <h3 className="font-heading text-white text-3xl md:text-4xl tracking-[1px] uppercase">{title}</h3>
+                        <p className="mt-3 text-sm text-white/90 font-body font-light leading-snug max-w-[32ch]">{description}</p>
+                        <button className="mt-4 flex items-center gap-2 text-white/70 hover:text-white transition-colors text-sm font-medium">
+                            Learn more
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                <line x1="7" y1="17" x2="17" y2="7"></line>
+                                <polyline points="7 7 17 7 17 17"></polyline>
+                            </svg>
+                        </button>
+                    </div>
+                </motion.div>
+            );
+        };
+
+        window.FeatureCard = FeatureCard;
+
+        const Capabilities = ({ onNavigate }) => {
+            const ref = useRef(null);
+            const isInView = useInView(ref, { once: true, amount: 0.1 });
+
+            const icons = {
+                gear: <path d="M12 15A3 3 0 0 0 9 12V6a3 3 0 1 1 6 0v6a3 3 0 0 0-3 3Zm5-9h-2V6a1 1 0 0 0-2 0v6h2a5 5 0 0 1 0 10v2H6a1 1 0 0 0 0 2h12a1 1 0 0 0 0-2h-1v-2a5 5 0 0 1 0-10Z"/>,
+                factory: <path d="M2 20h20v-8l-5 5-4-4-5 5-4-4-2 2Zm3-4V9l4-4 4 4v7h5v2H2v-2h3Z"/>,
+                precision: <path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm0 6a2 2 0 1 1 0-4 2 2 0 0 1 0 4Zm9-2h-1v2h-2v-2h-2l3-3 3 3h-1Zm-14-2h2v2h2v2h-2l-3-3-3 3h-2v-2h2v-2h2l3 3Z"/>
+            };
+
+            const features = [
+                {
+                    icon: icons.gear,
+                    title: 'Custom Manufacturing',
+                    description: 'Precision CNC machining and custom fabrication for complex parts. From single prototypes to full production runs with tolerances as tight as ±0.001mm.',
+                    tags: ['CNC Machining', 'Metal Fabrication', '3D Printing', 'Quality Assured']
+                },
+                {
+                    icon: icons.factory,
+                    title: 'Industrial Solutions',
+                    description: 'Complete industrial automation and mechanical system integration. We design, manufacture, and install custom equipment for production lines.',
+                    tags: ['Automation', 'Assembly Lines', 'Robotics', 'Installation']
+                },
+                {
+                    icon: icons.precision,
+                    title: 'R&D Partnership',
+                    description: 'From concept to production, we work alongside your engineering team. Rapid prototyping, design optimization, and manufacturability analysis.',
+                    tags: ['Rapid Prototyping', 'Design Support', 'Material Selection', 'Cost Analysis']
+                }
+            ];
+
+            const handleFeatureClick = (title) => {
+                onNavigate('signup');
+            };
+
+            return (
+                <section id="capabilities" className="relative min-h-screen w-full overflow-hidden" ref={ref}>
+                    <StarField />
+                    <div className="relative z-10 px-8 md:px-16 lg:px-20 pt-24 pb-10 flex flex-col min-h-screen">
+                        <div className="mb-auto">
+                            <motion.p
+                                className="text-sm font-body text-white/80 mb-6 cursor-default"
+                                initial={{ filter: 'blur(10px)', opacity: 0, y: 20 }}
+                                whileInView={{ filter: 'blur(0px)', opacity: 1, y: 0 }}
+                                viewport={{ once: true, amount: 0.3 }}
+                                transition={{ duration: 0.6, ease: 'easeOut' }}
+                            >
+                                // Solutions
+                            </motion.p>
+                            <motion.h2
+                                className="font-heading text-white text-6xl md:text-7xl lg:text-[6rem] leading-[0.9] tracking-[1px] uppercase"
+                                initial={{ filter: 'blur(10px)', opacity: 0, y: 20 }}
+                                whileInView={{ filter: 'blur(0px)', opacity: 1, y: 0 }}
+                                viewport={{ once: true, amount: 0.3 }}
+                                transition={{ duration: 0.6, ease: 'easeOut', delay: 0.1 }}
+                            >
+                                Engineering<br/>Excellence
+                            </motion.h2>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
+                            {features.map((feature, index) => (
+                                <motion.div
+                                    key={feature.title}
+                                    initial={{ filter: 'blur(10px)', opacity: 0, y: 30 }}
+                                    whileInView={{ filter: 'blur(0px)', opacity: 1, y: 0 }}
+                                    viewport={{ once: true, amount: 0.2 }}
+                                    transition={{ duration: 0.6, ease: 'easeOut', delay: index * 0.15 }}
+                                >
+                                    <FeatureCard {...feature} onAction={handleFeatureClick} />
+                                </motion.div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+            );
+        };
+
+        window.Capabilities = Capabilities;
+
+        const SignupSection = () => {
+            const [email, setEmail] = useState('');
+            const [submitted, setSubmitted] = useState(false);
+
+            const handleSubmit = (e) => {
+                e.preventDefault();
+                if (email) {
+                    setSubmitted(true);
+                }
+            };
+
+            return (
+                <section id="signup" className="relative min-h-screen w-full overflow-hidden flex items-center justify-center">
+                    <StarField />
+                    <motion.div
+                        className="relative z-10 max-w-lg w-full mx-auto px-8 text-center"
+                        initial={{ filter: 'blur(10px)', opacity: 0, y: 30 }}
+                        whileInView={{ filter: 'blur(0px)', opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8 }}
+                    >
+                        <h2 className="font-heading text-white text-5xl md:text-6xl tracking-[2px] leading-none mb-4 uppercase">
+                            Start Your Project
+                        </h2>
+                        <p className="text-white/70 font-body text-lg mb-8">
+                            Get a personalized quote for your next engineering project. Our team responds within 24 hours with detailed specifications and pricing.
+                        </p>
+
+                        {!submitted ? (
+                            <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+                                <input
+                                    type="email"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    placeholder="Enter your business email"
+                                    className="liquid-glass-strong rounded-full px-6 py-4 text-white font-body text-center placeholder-white/40 outline-none focus:ring-2 focus:ring-white/30"
+                                    required
+                                />
+                                <button
+                                    type="submit"
+                                    className="btn-primary rounded-full px-6 py-4 text-sm font-medium flex items-center justify-center gap-2"
+                                >
+                                    Request Quote
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                        <line x1="7" y1="17" x2="17" y2="7"></line>
+                                        <polyline points="7 7 17 7 17 17"></polyline>
+                                    </svg>
+                                </button>
+                            </form>
+                        ) : (
+                            <motion.div
+                                className="liquid-glass rounded-3xl p-8"
+                                initial={{ scale: 0.9, opacity: 0 }}
+                                animate={{ scale: 1, opacity: 1 }}
+                            >
+                                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" className="mx-auto mb-4">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <path d="M9 12l2 2 4-4"/>
+                                </svg>
+                                <p className="text-white font-heading italic text-2xl mb-2">Quote Request Received!</p>
+                                <p className="text-white/70 text-sm">We'll send a detailed quote to {email} within 24 hours.</p>
+                            </motion.div>
+                        )}
+                    </motion.div>
+                </section>
+            );
+        };
+
+        window.SignupSection = SignupSection;
+
+        const Footer = ({ onNavigate }) => (
+            <footer className="bg-black py-12 px-8 md:px-16 lg:px-20 border-t border-white/10">
+                <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+                    <div className="flex items-center gap-4">
+                        <button onClick={() => onNavigate && onNavigate('home')} className="w-10 h-10 liquid-glass rounded-full flex items-center justify-center hover:scale-105 transition-transform cursor-pointer" style={{ width: '60px' }}>
+                            <span className="font-heading text-white text-xl tracking-[2px]">OB</span>
+                        </button>
+                        <span className="font-heading text-white/60 text-lg tracking-[2px] uppercase">Oğuzhan Bacak</span>
+                    </div>
+                    <div className="flex items-center gap-8 text-white/50 text-sm font-body">
+                        <button onClick={() => onNavigate && onNavigate('signup')} className="hover:text-white transition-colors cursor-pointer">Privacy</button>
+                        <button onClick={() => onNavigate && onNavigate('signup')} className="hover:text-white transition-colors cursor-pointer">Terms</button>
+                        <button onClick={() => onNavigate && onNavigate('signup')} className="hover:text-white transition-colors cursor-pointer">Contact</button>
+                    </div>
+                    <p className="text-white/30 text-xs font-body tracking-[1px] uppercase">© 2026 Oğuzhan Bacak. All rights reserved.</p>
+                </div>
+            </footer>
+        );
+
+        window.Footer = Footer;
+
+        const App = () => {
+            const [modal, setModal] = useState({ isOpen: false, title: '', content: '' });
+
+            const handleNavigate = (section) => {
+                if (section === 'signup') {
+                    setModal({
+                        isOpen: true,
+                        title: 'Request a Quote',
+                        content: (
+                            <form onSubmit={(e) => { e.preventDefault(); setModal({ isOpen: false, title: '', content: '' }); }} className="flex flex-col gap-4 mt-4">
+                                <input
+                                    type="text"
+                                    placeholder="Your Name"
+                                    className="liquid-glass rounded-full px-4 py-3 text-white text-sm outline-none"
+                                    required
+                                />
+                                <input
+                                    type="email"
+                                    placeholder="Business Email"
+                                    className="liquid-glass rounded-full px-4 py-3 text-white text-sm outline-none"
+                                    required
+                                />
+                                <input
+                                    type="text"
+                                    placeholder="Company Name"
+                                    className="liquid-glass rounded-full px-4 py-3 text-white text-sm outline-none"
+                                />
+                                <textarea
+                                    placeholder="Project Description"
+                                    className="liquid-glass rounded-2xl px-4 py-3 text-white text-sm outline-none min-h-[80px] resize-none"
+                                />
+                                <button type="submit" className="btn-primary rounded-full px-6 py-3 text-sm font-medium mt-2">
+                                    Submit Request
+                                </button>
+                            </form>
+                        )
+                    });
+                } else {
+                    const element = document.getElementById(section);
+                    if (element) {
+                        element.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            };
+
+            return (
+                <>
+                    <Navbar onNavigate={handleNavigate} />
+                    <main className="snap-container">
+                        <Hero onNavigate={handleNavigate} />
+                        <Capabilities onNavigate={handleNavigate} />
+                        <SignupSection />
+                    </main>
+                    <Footer onNavigate={handleNavigate} />
+                    <Modal
+                        isOpen={modal.isOpen}
+                        onClose={() => setModal({ isOpen: false, title: '', content: '' })}
+                        title={modal.title}
+                    >
+                        {modal.content}
+                    </Modal>
+                </>
+            );
+        };
+
+        window.App = App;
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
